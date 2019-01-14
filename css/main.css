@@ -1860,7 +1860,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #d11bff;
+  background: #ff6a21;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3018,8 +3018,8 @@ pre .deletion {
 .site-author-name {
   margin: 5px 0 0;
   text-align: center;
-  color: #fff;
-  font-weight: normal;
+  color: #f37055;
+  font-weight: bold;
   font-family: 'Comic Sans MS', sans-serif;
 }
 .site-description {
@@ -3039,4 +3039,56 @@ pre .deletion {
 .site-state-item {
   padding: 0px 15px;
   border-left: 1.5px solid #a166ab;
+}
+.feed-link {
+  margin-top: 15px;
+  margin-left: 7px;
+}
+.feed-link a {
+  color: #fff;
+  border: 1px solid #9e9e9e !important;
+  border-radius: 15px;
+}
+.feed-link a:hover {
+  background-color: #a166ab;
+}
+.feed-link a i {
+  color: #fff;
+}
+.links-of-blogroll-title {
+  margin-bottom: 10px;
+  margin-top: 15px;
+  color: rgba(7,179,155,0.75);
+  margin-left: 6px;
+  font-size: 15px;
+  font-weight: bold;
+}
+.sidebar a {
+  color: #ccc;
+  border-bottom: none;
+}
+.sidebar a:hover {
+  color: #fff;
+}
+#days {
+  display: block;
+  color: #ffaeb9;
+  font-size: 13px;
+  margin-top: 15px;
+}
+.post-toc ol a {
+  color: #07b39b;
+  border-bottom: 1px solid #607d8b;
+}
+.post-toc ol a:hover {
+  color: #a166ab;
+  border-bottom-color: #a166ab;
+}
+.post-toc .nav .active > a {
+  color: #a166ab;
+  border-bottom-color: #a166ab;
+}
+.post-toc .nav .active > a:hover {
+  color: #a166ab;
+  border-bottom-color: #a166ab;
 }
