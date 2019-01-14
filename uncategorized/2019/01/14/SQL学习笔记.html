@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#fff">
+
+
+
+  
+  
+    
+      
+    
+    
+      
+    
+  <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+  <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.min.css" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#fff">
+
+
+
+
+
+  <meta name="keywords" content="hexo,博客,得到,生活,技术,前端,后台">
+
+
+
+
+  
+
+
+  <link rel="alternate" href="/atom.xml" title="Depeng's Blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="#SQL语句基础Structured Query Language操作和检索关系型数据库的标准语言，标准的SQL语句可以用于操作任何关系数据库。一般程序员负责：  在数据库中检索信息 对数据库的信息进行更新 改变数据库的结构DBA负责： 更改系统的安全设置 增加或回收用户对数据库、表的许可权限  行：表中的一个记录  有时也被称为记录主键：一列或者一组列，其值能够唯一标识表中的每一行。便于更新和删">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL学习笔记">
+<meta property="og:url" content="https://www.blogs.rhsphere.com/uncategorized/2019/01/14/SQL学习笔记.html">
+<meta property="og:site_name" content="Depeng&#39;s Blog">
+<meta property="og:description" content="#SQL语句基础Structured Query Language操作和检索关系型数据库的标准语言，标准的SQL语句可以用于操作任何关系数据库。一般程序员负责：  在数据库中检索信息 对数据库的信息进行更新 改变数据库的结构DBA负责： 更改系统的安全设置 增加或回收用户对数据库、表的许可权限  行：表中的一个记录  有时也被称为记录主键：一列或者一组列，其值能够唯一标识表中的每一行。便于更新和删">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-14T03:33:09.463Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SQL学习笔记">
+<meta name="twitter:description" content="#SQL语句基础Structured Query Language操作和检索关系型数据库的标准语言，标准的SQL语句可以用于操作任何关系数据库。一般程序员负责：  在数据库中检索信息 对数据库的信息进行更新 改变数据库的结构DBA负责： 更改系统的安全设置 增加或回收用户对数据库、表的许可权限  行：表中的一个记录  有时也被称为记录主键：一列或者一组列，其值能够唯一标识表中的每一行。便于更新和删">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"perspectiveLeftIn","post_header":"fadeIn","post_body":"fadeIn","coll_header":"perspectiveLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+
+
+  <link rel="canonical" href="https://www.blogs.rhsphere.com/uncategorized/2019/01/14/SQL学习笔记.html">
+
+
+
+
+
+  <title>SQL学习笔记 | Depeng's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Depeng's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">北京邮电大学研究生在读</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-iget">
+          <a href="/iget/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-paper-plane"></i> <br>
+            
+            得到
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-messages">
+          <a href="/messages/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-wpbeginner"></i> <br>
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.blogs.rhsphere.com/uncategorized/2019/01/14/SQL学习笔记.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Depeng Lu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Depeng's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SQL学习笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-14T11:32:28+08:00">
+                2019-01-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/uncategorized/2019/01/14/SQL学习笔记.html" class="leancloud_visitors" data-flag-title="SQL学习笔记">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>#SQL语句基础<br>Structured Query Language<br>操作和检索关系型数据库的标准语言，标准的SQL语句可以用于操作任何关系数据库。<br>一般程序员负责：</p>
+<ul>
+<li>在数据库中检索信息</li>
+<li>对数据库的信息进行更新</li>
+<li>改变数据库的结构<br>DBA负责：</li>
+<li>更改系统的安全设置</li>
+<li>增加或回收用户对数据库、表的许可权限</li>
+</ul>
+<p><b>行：表中的一个记录  有时也被称为记录</b><br><b>主键：一列或者一组列，其值能够唯一标识表中的每一行。便于更新和删除特定的行。</b></p>
+<p>##SQL语句类型</p>
+<ol>
+<li>查询语句:主要是由select关键字完成，查询语句是SQL语句中最复杂、功能最丰富的语句</li>
+<li>DML（Data Manipulation L, 数据操作语言）语句：主要有insert、update和delete三个关键字完成</li>
+<li>DDL（Data Defination L，数据定义语言）语句：主要由create、alter、drop和truncate四个关键字完成</li>
+<li>DCL（Data Control L, 数据控制语言）语句：主要由grant和revoke两个关键字完成 <em>为数据库用户授权，或者访问指定用户的权限</em></li>
+<li>事务控制语句：主要有commit、rollback和savepoint三个关键字完成</li>
+</ol>
+<p>##DDL语句</p>
+<ul>
+<li><p>创建表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> [SchemaName.]tableName</span><br><span class="line">(</span><br><span class="line">	columnName datatype [<span class="keyword">default</span> expr]</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">test</span> </span><br><span class="line">(</span><br><span class="line">	test_id <span class="built_in">int</span>,</span><br><span class="line">	test_price <span class="built_in">decimal</span>,</span><br><span class="line">	test_name <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">default</span> <span class="string">'xxx'</span>,</span><br><span class="line">	test_desc <span class="built_in">text</span>,</span><br><span class="line">	test_img <span class="built_in">blob</span>,</span><br><span class="line">	test_date datetime</span><br><span class="line">);</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> thesame <span class="keyword">as</span> <span class="keyword">select</span> * <span class="keyword">from</span> user_inf;</span><br><span class="line"><span class="comment">#选中和user_inf完全相同的字段和数据建表</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#增加列定义</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> tableName</span><br><span class="line"><span class="keyword">add</span></span><br><span class="line">(</span><br><span class="line">	column_name datatype [<span class="keyword">default</span> expr],</span><br><span class="line">);</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> hehe <span class="keyword">add</span> hehe_id <span class="built_in">int</span>;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> hehe </span><br><span class="line"><span class="keyword">add</span></span><br><span class="line">(</span><br><span class="line">	aaa <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">default</span> <span class="string">'xxx'</span>,</span><br><span class="line">	bbb <span class="built_in">varchar</span>(<span class="number">255</span>)</span><br><span class="line">	);</span><br><span class="line"></span><br><span class="line"><span class="comment">#修改列定义</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> hehe</span><br><span class="line"><span class="keyword">modify</span> hehe_id <span class="built_in">varchar</span>(<span class="number">255</span>);</span><br><span class="line"><span class="comment">#同时修改列名</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> hehe</span><br><span class="line"><span class="keyword">change</span> hehe_id abc <span class="built_in">int</span>;</span><br><span class="line"><span class="comment">#将表重命名</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> hehe</span><br><span class="line"><span class="keyword">rename</span> <span class="keyword">to</span> wawa;</span><br><span class="line"></span><br><span class="line"><span class="comment">#修改列名</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> TABLENAME <span class="keyword">change</span> old_ColNAME new_ColNAME <span class="built_in">char</span>(<span class="built_in">int</span> ect..);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> wawa;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>##数据库约束</p>
+<ul>
+<li>5种完整性约束</li>
+</ul>
+<ol>
+<li>NOT NULL:非空约束，指定某列不能为空</li>
+<li>UNIQUE:唯一约束，制定某列或某几列不能重复</li>
+<li>PRIMARY KEY:主键，指定该列的值可以唯一地标识该记录</li>
+<li>FOREIGN KEY:外键，指定该行记录从属于主表中的一条记录，主要用于保证参照完整性</li>
+<li>CHECK:</li>
+</ol>
+<ul>
+<li>约束分类</li>
+</ul>
+<ol>
+<li>单列约束</li>
+<li>多列约束<br>-指定约束的两个时机</li>
+<li>建表的同时为相应的数据制定约束</li>
+<li>以修改表的方式来增加约束</li>
+</ol>
+<ul>
+<li><p>NOT NULL约束</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> hehe</span><br><span class="line">(</span><br><span class="line">	<span class="keyword">id</span> <span class="built_in">int</span> <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">	<span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">255</span>) defalut <span class="string">'ldp'</span> <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">	gender <span class="built_in">varchar</span>(<span class="number">2</span>) <span class="literal">null</span></span><br><span class="line">	);</span><br><span class="line"></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> hehe</span><br><span class="line"><span class="keyword">modify</span> gender <span class="built_in">varchar</span>(<span class="number">2</span>) <span class="keyword">not</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> hehe</span><br><span class="line"><span class="keyword">modify</span> <span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">2</span>) <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> hehe</span><br><span class="line"><span class="keyword">modify</span> <span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">default</span> <span class="string">'abc'</span> <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>UNIQUE约束<br>保证指定列或者指定列组合不允许出现重复值</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#列级约束语法建立约束，</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> unique_test</span><br><span class="line">(</span><br><span class="line">	<span class="keyword">id</span> <span class="built_in">int</span> <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">	<span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">unique</span></span><br><span class="line">	);</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">test</span></span><br><span class="line">(</span><br><span class="line">	<span class="keyword">id</span> <span class="built_in">int</span> <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">	<span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">255</span>).</span><br><span class="line">	pass <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">	<span class="keyword">unique</span> （<span class="keyword">name</span>)，</span><br><span class="line">	<span class="keyword">constraint</span> uk <span class="keyword">unique</span>(pass)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> test1</span><br><span class="line">(</span><br><span class="line">	<span class="keyword">id</span> <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">	<span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">	pass <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">	<span class="keyword">constraint</span> uk1 <span class="keyword">unique</span>(<span class="keyword">name</span>, pass)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> test1 <span class="keyword">drop</span> <span class="keyword">index</span> uk1;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> test1 <span class="keyword">add</span> <span class="keyword">unique</span>(<span class="keyword">name</span>, pass);</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> test1 <span class="keyword">modify</span> <span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">unique</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>PRIMARY KEY约束<br>主键约束相当于非空约束和唯一约束，即主键约束的列即不允许出现重复值，也不允许出现null值；如果对多列组合建立主键约束，则多列里包含的每一列都不能为空，但只要求这些列组合不能重复。主键列的值用于唯一标识表中的一条记录。<br>建表时使用列级约束</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> primary_test</span><br><span class="line">(</span><br><span class="line">	<span class="keyword">id</span> <span class="built_in">int</span> primary <span class="keyword">key</span>,</span><br><span class="line">	<span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">255</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>建表时创建主键约束，使用表级约束法<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> primary_test1</span><br><span class="line">(</span><br><span class="line">	<span class="keyword">id</span> <span class="built_in">int</span> <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">	<span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">	pass <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">	<span class="comment">#对于MySQL而言，test1_pk主键约束名无效，PRIMARY是主键约束名</span></span><br><span class="line">	<span class="keyword">constraint</span> test1_pk primary <span class="keyword">key</span>(<span class="keyword">id</span>)</span><br><span class="line">	);</span><br></pre></td></tr></table></figure></p>
+<p>建表时以多列建立组合主键，使用表级约束<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> primary_test2</span><br><span class="line">(</span><br><span class="line">	<span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">	pass <span class="built_in">varchar</span>(<span class="number">255</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> primary_test2</span><br><span class="line"><span class="keyword">drop</span> primary <span class="keyword">key</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> primary_test2</span><br><span class="line"><span class="keyword">add</span> primary <span class="keyword">key</span>(<span class="keyword">name</span>, pass);</span><br><span class="line"></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> primary_test2</span><br><span class="line"><span class="keyword">modify</span> <span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">255</span>) primary <span class="keyword">key</span>;</span><br></pre></td></tr></table></figure></p>
+<p>建立自增长的主键约束<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> primary_test3</span><br><span class="line">(</span><br><span class="line">	<span class="keyword">id</span> <span class="built_in">int</span> auto_increment primary <span class="keyword">key</span>,</span><br><span class="line">	<span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">	pass <span class="built_in">varchar</span>(<span class="number">255</span>)</span><br><span class="line">)；</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>FOREIGEN KEY约束<br><strong>MySQL会为该外键约束命名为tableName_ibfk_n</strong><br>从表的外键参照的只能是主表的主键列或者唯一键列。主表记录不允许被删除。<br>外键约束通常用于定义两个实体之间的一对多、一对一的关联关系。<br>对于一对多的关联关系，通常再多的一端增加外键列；一对一的关联关系，选择任意一方来增加外键列，被增加外键列的表被称为从表；对于多对多的关联关系，需要额外增加一个连接表来记录他们的关联关系。<br>列级约束法建立外键约束直接使用references关键字<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#列级约束法</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> teacher_table</span><br><span class="line">(</span><br><span class="line">	teacher_id <span class="built_in">int</span> auto_increment,</span><br><span class="line">	teacher_name <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">	primary <span class="keyword">key</span>(teacher_id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> student_table</span><br><span class="line">(</span><br><span class="line">	student_id <span class="built_in">int</span> auto_increment primary <span class="keyword">key</span>,</span><br><span class="line">	student_name <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">	java_teacher <span class="built_in">int</span> <span class="keyword">references</span> teacher_table(teacher_id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#表级约束法</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> teacher_table1</span><br><span class="line">(</span><br><span class="line">	teacher_id <span class="built_in">int</span> auto_increment,</span><br><span class="line">	teacher_name <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">	primary <span class="keyword">key</span>(teacher_id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> student_table1</span><br><span class="line">(</span><br><span class="line">	student_id <span class="built_in">int</span> auto_increment primary <span class="keyword">key</span>,</span><br><span class="line">	student_name <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">	java_teacher <span class="built_in">int</span>，</span><br><span class="line">	<span class="keyword">foreign</span> <span class="keyword">key</span>(java_teacher) <span class="keyword">references</span> teacher_table1(teacher_id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">#表级约束法,显示指定外键约束的名字</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> teacher_table2</span><br><span class="line">(</span><br><span class="line">	teacher_id <span class="built_in">int</span> auto_increment,</span><br><span class="line">	teacher_name <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">	primary <span class="keyword">key</span>(teacher_id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> student_table2</span><br><span class="line">(</span><br><span class="line">	student_id <span class="built_in">int</span> auto_increment primary <span class="keyword">key</span>,</span><br><span class="line">	student_name <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">	java_teacher <span class="built_in">int</span>，</span><br><span class="line">	<span class="keyword">constraint</span> student_teacher_fk <span class="keyword">foreign</span> <span class="keyword">key</span>(java_teacher) <span class="keyword">references</span></span><br><span class="line">	 teacher_table2(teacher_id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">#多列组合的外键约束，则必须使用表级约束法</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> teacher_table3</span><br><span class="line">(</span><br><span class="line">	teacher_name <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">	teacher_pass <span class="built_in">varchar</span>(<span class="number">255</span>)</span><br><span class="line">	primary <span class="keyword">key</span>(teacher_name, teacher_pass)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> student_table3</span><br><span class="line">(</span><br><span class="line">	student_id <span class="built_in">int</span> auto_increment primary <span class="keyword">key</span>,</span><br><span class="line">	student_name <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">	java_teacher_name <span class="built_in">varchar</span>(<span class="number">255</span>)，</span><br><span class="line">	java_teacher_pass <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">	<span class="keyword">foreign</span> <span class="keyword">key</span>(java_teache_name, java_teacher_pass)</span><br><span class="line">	 <span class="keyword">references</span> teacher_table3(teacher_name, teacher_pass)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">#删除</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student_table3</span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">foreign</span> <span class="keyword">key</span> student_table3_ibfk_1;</span><br><span class="line"><span class="comment">#修改</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student_table3</span><br><span class="line"><span class="keyword">add</span> <span class="keyword">foreign</span> <span class="keyword">key</span>(java_teacher_name, java_teacher_pass)</span><br><span class="line">  <span class="keyword">references</span> teacher_table3(teacher_name, teacher_pass);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>自关联</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> foreign_test</span><br><span class="line">(</span><br><span class="line">	foreign_id <span class="built_in">int</span> auto_increment primary <span class="keyword">key</span>,</span><br><span class="line">	foreign_name <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">	refer_id <span class="built_in">int</span>,</span><br><span class="line">	<span class="keyword">foreign</span> <span class="keyword">key</span>(refer_id) <span class="keyword">references</span> foreign_test(foreign_id)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<p><strong>级联删除、或者从表都设置为null</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> teacher_table4</span><br><span class="line">(</span><br><span class="line">	teacher_id <span class="built_in">int</span> auto_increment,</span><br><span class="line">	teacher_name <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">	primary <span class="keyword">key</span>(teacher_id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> student_table4</span><br><span class="line">(</span><br><span class="line">	student_id <span class="built_in">int</span> auto_increment primary <span class="keyword">key</span>,</span><br><span class="line">	student_name <span class="built_in">varchar</span>(<span class="number">255</span>),</span><br><span class="line">	java_teacher <span class="built_in">int</span>,</span><br><span class="line">	<span class="keyword">foreign</span> <span class="keyword">key</span>(java_teacher) <span class="keyword">references</span> teacher_table4(teacher_id)</span><br><span class="line">		<span class="keyword">on</span> <span class="keyword">delete</span> <span class="keyword">cascade</span> <span class="comment">#或者用on delete set null</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>索引<br>创建方式：</li>
+</ul>
+<ol>
+<li>定义主键约束、唯一约束、和外键约束是，系统自动创建索引</li>
+<li>手动<br>删除方式：</li>
+<li>数据表被删除时，自动</li>
+<li>手动</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">index</span> index_name <span class="keyword">on</span> tableName (<span class="keyword">colum</span>[, <span class="keyword">column</span>]...);</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">index</span> emp_last_name_idx</span><br><span class="line"><span class="keyword">on</span> emplees(last_name);</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">index</span> emp_last_name_idx1</span><br><span class="line"><span class="keyword">on</span> emplees(first_name, last_name);</span><br><span class="line"></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">index</span> emp_last)name_idx2</span><br><span class="line"><span class="keyword">on</span> emplees;</span><br><span class="line"><span class="keyword">show</span> <span class="keyword">index</span> <span class="keyword">from</span> tableName;</span><br></pre></td></tr></table></figure>
+<p>##DML<br>完成三个任务：</p>
+<ul>
+<li>插入新数据</li>
+<li>修改已有数据</li>
+<li>删除不需要的数据</li>
+</ul>
+<ol>
+<li><p>insert into语句<br>插入语句，每次只能插入一条记录</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tableName(<span class="keyword">column</span>) <span class="keyword">values</span>(<span class="keyword">value</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> student_table2(student_name)</span><br><span class="line"><span class="keyword">select</span> techer_name <span class="keyword">from</span> tescher_table2;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>update 语句<br>修改多条记录</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> table_name <span class="keyword">set</span> column1 = <span class="keyword">value</span>[, column2 = value2]</span><br><span class="line"><span class="keyword">where</span> condition;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>delete from语句<br>整行的删除</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> tableName</span><br><span class="line"><span class="keyword">where</span> teacher_id &gt; <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>##表单查询<br>*表示所有列<br><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> teacher_table;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> student_name <span class="keyword">from</span> student_table</span><br><span class="line"><span class="keyword">where</span> java_teacher &gt; <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> teacher_id + <span class="number">5</span> </span><br><span class="line"><span class="keyword">from</span> teacher_table;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> teacher_table</span><br><span class="line"><span class="keyword">where</span> teacher_id * <span class="number">3</span> &gt; <span class="number">4</span>;</span><br></pre></td></tr></table></figure></p>
+<p>select 需要指明选择什么，以及在哪里选择<br>数据格式是表示问题，而不是检索问题<br><strong>检索不同的值</strong> select distinct id from tableNmae;<br><strong>检索前五个</strong><br>select prod_name from Products limit 5 offset 5;<br>捷径<br>select prod_name from Products limit 5, 5;</p>
+<p>排序<br>select prod_name from Products<br>order by prod_name;<br>多列排序<br>select prod_id, prod_price, prod_name<br>from Products<br>order by prod_price, prod_name;<br>按列位置排序<br>select prod_id, prod_price, prod_name<br>from Products<br>order by 2, 3;</p>
+<p>降序排序<br>select prod_id, prod_price, prod_name<br>from Products<br>order by prod_price desc;</p>
+<p>多列降序排序：必须对每一个列指定desc关键字<br>select prod_id, prod_price, prod_name<br>from Products<br>order by prod_price desc, prod_name;</p>
+<p>过滤数据<br>只检索所需数据需要指定搜索条件（search criteria),搜索条件也叫过滤条件（filter condition)<br>select prod_name, prod_price<br>from Products<br>where prod_price = 3.49;</p>
+<p><strong>同时使用order by和where时，应该让order by在where后面</strong></p>
+<p>select prod_name, prod_price from Products<br>where prod_price &lt; 10;</p>
+<p>select vend_id, prod_name from Products<br>where vend_id &lt;&gt; ‘DLL01’;</p>
+<p>select prod_name, prod_price from Products<br>where prod_price between 5 and 10;</p>
+<p>select prod_name from Products where prod_price is null;</p>
+<p>select cust_name from Customers where cust_email is null;</p>
+<p>组合where子句</p>
+<ol>
+<li><p>and操作符<br>select prod_id, prod_price, prod_name<br>from Products<br>where vend_id = ‘DLL01’ and prod_price &lt;= 4;</p>
+</li>
+<li><p>or<br>select prod_name, prod_price from Products<br>where vend_id = ‘DLL01’ or vend_id = ‘BRS01’;</p>
+</li>
+<li><p>and的优先级比or更高，使用圆括号分组<br>select prod_name, prod_price from Products<br>where (vend_id = ‘DLL01’ or vend_id = ‘BRS01’)<br>  and prod_price &gt;= 10;</p>
+</li>
+<li><p>in<br>有很多合法选项时，in更加清楚、直观<br>select prod_name, prod_price<br>from Products<br>where vend_id in (‘DLL01’, ‘BRS01’)<br>order by prod_price;</p>
+</li>
+<li><p>not<br>not否定in、between、exists子句<br>select prod_name from Products<br>where not vend_id = ‘DLL01’<br>order by prod_name desc;</p>
+</li>
+</ol>
+<p>##通配符过滤</p>
+<ol>
+<li>like<br>select prod_id, prod_name<br>from Products<br>where prod_name like ‘Fish%’;</li>
+</ol>
+<p>select prod_id, prod_name from Products<br>where prod_name like ‘%bean bag%’;</p>
+<p>select prod_id, prod_name<br>from Products<br>where prod_name like ‘__ inch teddy bear’;</p>
+<p>%字符匹配多个字符，_只匹配一个字符</p>
+<p>select cust_contact from Customers<br>where cust_contact like ‘J%’<br>order by cust_contact;</p>
+<p>select cust_contact from Customers<br>where cust_contact like ‘[^JM]%’<br>order by cust_contact;</p>
+<p>select concat(vend_name, vend_country) from vendors<br>order by vend_name;<br>select concat(rtrim(vend_name), rtrim(vend_country))<br>from vendors order by vend_name;</p>
+<p>select concat(vend_name, vend_country) as vend_title<br>from Vendors order by vend_name;</p>
+<p>select concat(vend_name, ‘( ‘, vend_country, ‘)’)<br>as vend_title from Vendors order by vend_name;<br><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> prod_id, quantity, item_price, quantity*item_price <span class="keyword">as</span> expanded_price</span><br><span class="line"><span class="keyword">from</span> OrderItems</span><br><span class="line"><span class="keyword">where</span> order_num = <span class="number">20008</span>;</span><br></pre></td></tr></table></figure></p>
+<p>select order_num from Orders where year(order_date) = 2012;</p>
+<p>##汇总数据<br>select avg(prod_price) as avg_price from Products;<br>select avg(prod_price) as avg_price<br>from Products<br>where vend_id = ‘DLL01’;</p>
+<p>count()函数 确定行中的数目或符合特定条件的行的数目。<br><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">count</span>(*) <span class="keyword">as</span> num_cust <span class="keyword">from</span> Customers;</span><br></pre></td></tr></table></figure></p>
+<p>select count(cust_email) as num_cust from Customers;</p>
+<p>select sum(quantity) as items_ordered from OrderItems<br>where order_num = 20005;</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(quantity*item_price) <span class="keyword">as</span> total_price <span class="keyword">from</span> OrderItems</span><br><span class="line"><span class="keyword">where</span> order_num = <span class="number">20005</span>;</span><br></pre></td></tr></table></figure>
+<p>select sum(quantity) as items_ordered from OrderItems<br>where order_num = 20005;</p>
+<p>select avg(distinct prod_price) as avg_price from Products where vend_id = ‘DLL01’;</p>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> vend_id, count<span class="comment">(*) as num_prods from products</span></span><br><span class="line"><span class="comment">group by vend_id</span></span><br><span class="line"><span class="comment">having count(*)</span> &gt;= <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+<p>where过滤行，having过滤分组</p>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> cust_id, count<span class="comment">(*) as order from Orders</span></span><br><span class="line"><span class="comment">group by cust_id</span></span><br><span class="line"><span class="comment">having count(*)</span> &gt;= <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> cust_id, count<span class="comment">(*) as orders</span></span><br><span class="line"><span class="comment">from Orders</span></span><br><span class="line"><span class="comment">group by cust_id</span></span><br><span class="line"><span class="comment">having count(*)</span> &gt; <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<p>where在分组前行过滤，having在分组后</p>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> vend_id, count<span class="comment">(*) as num_prods</span></span><br><span class="line"><span class="comment">from Products</span></span><br><span class="line"><span class="comment">where prod_price &gt;= 4</span></span><br><span class="line"><span class="comment">group by vend_id</span></span><br><span class="line"><span class="comment">having count(*)</span> &gt;= <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> vend_id, count<span class="comment">(*) as num_prods</span></span><br><span class="line"><span class="comment">from Products</span></span><br><span class="line"><span class="comment">group by vend_id</span></span><br><span class="line"><span class="comment">having count(*)</span> &gt;= <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">order by</th>
+<th style="text-align:center">group by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">对产生的输出排序</td>
+<td style="text-align:center">对行分组，但输出可能不是分组的排序，只可能使用选择列或者表达式列</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> order_num, count<span class="comment">(*) as items from OrderItems</span></span><br><span class="line"><span class="comment">group by order_num</span></span><br><span class="line"><span class="comment">having count(*)</span> &gt;= <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> order_num, count<span class="comment">(*) as items from OrderItems</span></span><br><span class="line"><span class="comment">group by order_num</span></span><br><span class="line"><span class="comment">having count(*)</span> &gt;= <span class="number">3</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> items, order_num;</span><br></pre></td></tr></table></figure>
+<p>##子查询<br>查询（query）一般指的是select语句<br>子查询（subquery)嵌套的查询,总是从内向外嵌套</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查询订单号</span></span><br><span class="line"><span class="keyword">select</span> order_num <span class="keyword">from</span> OrderItems <span class="keyword">where</span> prod_id =<span class="string">'RGAN01'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> cust_id <span class="keyword">from</span> Orders <span class="keyword">where</span> order_num <span class="keyword">in</span>(<span class="keyword">select</span> order_num <span class="keyword">from</span> OrderItems <span class="keyword">where</span> prod_id =<span class="string">'RGAN01'</span>);</span><br></pre></td></tr></table></figure>
+<p>避免硬编码顾客id，使用子查询<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> cust_name, cust_contact <span class="keyword">from</span> Customers</span><br><span class="line">	<span class="keyword">where</span> cust_id <span class="keyword">in</span> (<span class="keyword">select</span> cust_id <span class="keyword">from</span> Orders</span><br><span class="line">					<span class="keyword">where</span> order_num <span class="keyword">in</span> </span><br><span class="line">					(<span class="keyword">select</span> order_num <span class="keyword">from</span> OrderItems </span><br><span class="line">						<span class="keyword">where</span> prod_id = <span class="string">'RGAN01'</span>));</span><br></pre></td></tr></table></figure></p>
+<p><strong><em>作为子查询的select语句只能查询单个列</em></strong><br>使用子查询并不总是执行这类数据检索的最有效方法。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#检索特定顾客的订单数目</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">as</span> orders <span class="keyword">from</span> Orders <span class="keyword">where</span> cust_id = <span class="string">'1000000001'</span>;</span><br><span class="line"><span class="comment">#全检索所有顾客的订单数，并按照顾客姓名排序</span></span><br><span class="line"><span class="keyword">select</span> cust_name, cust_state, </span><br><span class="line">(<span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> Orders <span class="keyword">where</span> Orders.cust_id = Customers.cust_id) <span class="keyword">as</span> orders</span><br><span class="line"><span class="keyword">from</span> Customers <span class="keyword">order</span> <span class="keyword">by</span> cust_name;</span><br></pre></td></tr></table></figure>
+<p><strong>完全限定列名：</strong>指定表名和列名，告诉SQL语言，比较Orders表中的cust_id和当前正从Customers表中检索的cust_id。如果不这样写DBMS会认为是要对Orders表中的cust_id自身进行比较。</p>
+<p>##联结表<br>创建联结表，指定要联结的所有表以及关联他们的方式<br><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> vend_name, prod_name, prod_price</span><br><span class="line"><span class="keyword">from</span> Vendors, Products</span><br><span class="line"><span class="keyword">where</span> Vendors.vend_id = Products.vend_id;</span><br></pre></td></tr></table></figure></p>
+<p><strong>笛卡尔积（cartesian product)</strong><br>没有联结条件的关系返回的结果为笛卡尔积。检索出来的行的树木将是第一个表中的行数乘以第二个表中的行数。<br>select vend_name, prod_name, prod_price<br>from Vendors, Products;</p>
+<p>内联结（inner join)<br>等值联结（equijoin），基于两个表之间的相等测试</p>
+<p>select vend_name, prod_name, prod_price<br>from Vendors inner join Products<br>on Vendors.vend_id = Products.vend_id;</p>
+<p>连接多个表<br>select prod_name, vend_name, prod_price, quantity<br>from OrderItems, Products, Vendors<br>where Products.vend_id = Vendors.vend_id and OrderItems.prod_id = Products.prod_id<br>and order_num = 20007;</p>
+<p>select cust_name, cust_contact from Customers<br>    where cust_id in (select cust_id from Orders<br>                    where order_num in<br>                    (select order_num from OrderItems<br>                        where prod_id = ‘RGAN01’));<br>使用联结表改写上面的语句：<br>select cust_name, cust_contact<br>from Customers, Orders, OrderItems<br>where Customers.cust_id = Orders.cust_id<br>and Orders.order_num = OrderItems.order_num<br>and prod_id = ‘RGAN01’;</p>
+<p><strong><em>联结是SQL中一个中重要、最强大的特性，有效使用联结需要对挂系数据库有基本的了解。</em></strong></p>
+<p>##创建使用高级联结<br>使用表别名：缩短SQL语句；允许在一条select语句中多次使用相同的表。</p>
+<p>select cust_name, cust_contact from Customers as C, Orders as O, OrderItems as OI<br>where C.cust_id = O.cust_id and OI.order_num = O.order_num<br>and prod_id = ‘RGAN01’;</p>
+<p>使用不同联结：<br>自联结（self-join)、自然联结（naturanl join)、外联结(outer join)</p>
+<p>自联结 要给Jim Jones同一公司的所有顾客发送一封信件。<br>首先找出Jim Jones工作的公司，然后找到该公司的所有顾客。<br>select cust_id, cust_name, cust_contact<br>from Customers where cust_name = (select cust_name from Customers where cust_contact = ‘Jim Jones’);<br>等价方法<br>select c1.cust_id, c1.cust_name, c1.cust_contact<br>from Customers as c1, Customers as c2 where c1.cust_name = c2.cust_name<br>and c2.cust_contact = ‘Jim Jones’;</p>
+<p>自然联结<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> C.*, O.order_num, O.order_date, OI.prod_id, OI.quantity, OI.item_price</span><br><span class="line"><span class="keyword">from</span> Customers <span class="keyword">as</span> C, Orders <span class="keyword">as</span> O, OrderItems <span class="keyword">as</span> OI</span><br><span class="line"><span class="keyword">where</span> C.cust_id = O.cust_id <span class="keyword">and</span> OI.order_num = O.order_num</span><br><span class="line"><span class="keyword">and</span> prod_id = <span class="string">'RGAN01'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> Customers.cust_id, Orders.order_num</span><br><span class="line"><span class="keyword">from</span> Customers <span class="keyword">inner</span> <span class="keyword">join</span> Orders <span class="keyword">on</span> Customers.cust_id = Orders.cust_id;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> Customers.cust_id, Orders.order_num <span class="keyword">from</span> CUstomers <span class="keyword">left</span> <span class="keyword">outer</span> <span class="keyword">join</span> Orders</span><br><span class="line"><span class="keyword">on</span> Customers.cust_id = Orders.cust_id;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> Customers.cust_id, Orders.order_num <span class="keyword">from</span> Customers <span class="keyword">right</span> <span class="keyword">outer</span> <span class="keyword">join</span> Orders</span><br><span class="line"><span class="keyword">on</span> Orders.cust_id = Customers.cust_id;</span><br></pre></td></tr></table></figure></p>
+<p>SQL聚集函数<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">avg() count() max() min() sum()</span><br><span class="line">select Customers.cust_id, count(Orders.order_num) as num_ord <span class="keyword">from</span> Customers inner join Orders on Customers.cust_id = Orders.cust_id<span class="built_in"> group </span>by Customers.cust_id;</span><br><span class="line"></span><br><span class="line">select Customers.cust_id, count(Orders.order_num) as num_ord <span class="keyword">from</span> Customers left outer join Orders on Customers.cust_id = Orders.cust_id<span class="built_in"> group </span>by Customers.cust_id;</span><br></pre></td></tr></table></figure></p>
+<p>select into 语句<br>从一个表复制到另一个表<br>create table CustCopy as select * from Customers;</p>
+<p>更新和删除数据<br>使用UPDATE时一定要细心，因为稍有不注意，就会更新表中的所有行。<br>基本的update语句：1）需要更新的表，2）列名和他们的新值，3）确定要更新那些行的过滤条件<br>update Customers set cust_email = <a href="mailto:&#39;kim@thetoystore.com" target="_blank" rel="noopener">&#39;kim@thetoystore.com</a>‘ where cust_id = ‘1000000005’;<br>update Customers set cust_email = <a href="mailto:&#39;kim@thetoystore.com" target="_blank" rel="noopener">&#39;kim@thetoystore.com</a>‘, cust_contact = ‘Sam Roberts’ where cust_id = ‘1000000005’;</p>
+<p>SQL中空字符串用’’表示，是一个值，而NULL表示没有值。</p>
+<p>alter table Vendors drop column vend_phone;</p>
+<p>删除表的内容可以用：delete from custcopy; 和 truncate custcopy;<br>删除表 drop table custcopy;</p>
+<p>视图不包含任何列或数据，包含的是一个查询，被封装起来。<br>视图：</p>
+<ol>
+<li>重用SQL语句。</li>
+<li>简化复杂的SQL操作</li>
+<li>使用表的一部分而不是整个表。</li>
+<li>保护数据。</li>
+<li>更改数据格式和表示。<br>create view 只能创建不存在的视图<br>drop view viewName  删除视图</li>
+</ol>
+<p>create view ProductCustomers as select cust_name, cust_contact, prod_id from Customers, Orders, OrderItems where Customers.cust_id = Orders.cust_id and OrderItems.order_num = Orders.order_num;</p>
+<p>select cust_name, cust_contact from ProductCustomers where prod_id = ‘RGAN01’;</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/uncategorized/2019/01/13/hello-world.html" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.png" alt="Depeng Lu">
+            
+              <p class="site-author-name" itemprop="name">Depeng Lu</p>
+              <p class="site-description motion-element" itemprop="description">愿你在迷茫时，坚信你的珍贵，爱你所爱，行你所行，听从你心，无问西东  -from Forever Young</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/rhsphere" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:rhsphere@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/rhsphere" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                神奇的链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wufan.site/" title="Fan Wu" target="_blank">Fan Wu</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.ouyangsong.com/" title="Song Ba" target="_blank">Song Ba</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.rhsphere.com/" title="DePeng Official Website" target="_blank">DePeng Official Website</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.bilibili.com/video/av6211226/" title="尼古拉·特斯拉：发明了现代世界的人" target="_blank">尼古拉·特斯拉：发明了现代世界的人</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://rhsphre.github.io/" title="意味深长的叹息" target="_blank">意味深长的叹息</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Depeng Lu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">3.5k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      <i class="fa fa-eye"></i>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.1/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.1/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("82jdCI9UYCgNFzKdNh1QLY3W-gzGzoHsz", "3BLDtyhvEleDl8lJId0wQwMB");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
