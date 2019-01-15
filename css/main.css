@@ -1896,7 +1896,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #c71f20;
+  background: #47ff0e;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3442,6 +3442,9 @@ code.description {
 }
 .weixin-menu:hover .weixin-description {
   opacity: 1;
+}
+#instantclick {
+  display: none;
 }
 @-moz-keyframes heartAnimate {
   0%, 100% {
