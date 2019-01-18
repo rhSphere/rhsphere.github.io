@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.blogs.rhsphere.com/"/>
-  <updated>2019-01-14T08:51:44.374Z</updated>
+  <updated>2019-01-18T08:18:47.000Z</updated>
   <id>https://www.blogs.rhsphere.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ARM教材格式</title>
+    <link href="https://www.blogs.rhsphere.com/ARM/%E6%A0%BC%E5%BC%8F/2019/01/18/ARM%E6%95%99%E6%9D%90%E6%A0%BC%E5%BC%8F.html"/>
+    <id>https://www.blogs.rhsphere.com/ARM/格式/2019/01/18/ARM教材格式.html</id>
+    <published>2019-01-18T08:18:47.000Z</published>
+    <updated>2019-01-18T08:18:47.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>标题使用模板word文件，文件名：ARM教材模板文件.word，在顶部工具栏中-&gt;样式中-&gt;往后选设置了如名字为标题1、标题2等格式，格式已经设置好直接使用。</p><ol><li>一级标题  为章节标题，使用不到。</li><li>二级标题<br>格式为如 2.6  ARM处理器的寄存器组织，数字序号与汉字空两格，使用标题2格式刷即可。</li><li>三级标题  使用方法同二级标题</li></ol><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>样式中设置了好了名字为正文格式的样式，选中每一段落后点改样式即可。<br>中文  宋体 五号字体  西文 Times New Roman 五号字体</p><p>图名在图片下方<br>图名命名方式为 图2-1  具体的图名，数字序号与汉字空两格，使用01_图头格式刷即可。<br><strong>注意：图片务必使用vision画图，自己画出来，图中字体的的格式同正文，使图片字体清晰即可，不会使用visio或者画完图后不会转换成pdf或者图片格式的可以询问倪博</strong></p><h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><p>表名在表的上方，<br>图名命名方式为 表2-1  具体的图名，数字序号与汉字空两格，使用04_表头格式刷即可。<br>表格中字体参考  田老师给的资料中的word <strong>第1，2章 微型计算机原理及应用-2.doc</strong><br><strong>图名和表名在文中必须清楚地引用，比如：“如图2-1所示” 或者 “如表2-2所示”</strong></p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>代码字体 中文 宋体 五号  英文 Times New Roman</p><h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ol><li>区分中英文的括号，区分中英文逗号，引号和分号等</li><li>代码注释需要正确注释</li><li><strong>参考田老师给的资料中的word 第1，2章 微型计算机原理及应用-2.doc</strong></li><li>给的模板word中设置好了正文格式、标题格式、图头和表头格式，未设置表格中字体格式和代码字体格式，按照前面所说的先写即可。</li><li>文章参考借鉴时，直接粘贴过来注意修改，段落语意是否流畅，<strong>不要随意堆砌文字，导致段落主语混乱、逻辑混乱、语意重复等问题</strong>，自己多修改</li><li>参考资料在群里，自己可以找一些电子版的，然后我给大家下载下来。</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      本次教材的部分参考格式，大家可以按照文中的要求来写，有问题请及时沟通交流。
+    
+    </summary>
+    
+      <category term="ARM" scheme="https://www.blogs.rhsphere.com/categories/ARM/"/>
+    
+      <category term="格式" scheme="https://www.blogs.rhsphere.com/categories/ARM/%E6%A0%BC%E5%BC%8F/"/>
+    
+    
+      <category term="ARM教材" scheme="https://www.blogs.rhsphere.com/tags/ARM%E6%95%99%E6%9D%90/"/>
+    
+  </entry>
   
   <entry>
     <title>JavaScript</title>
