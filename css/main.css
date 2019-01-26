@@ -493,7 +493,7 @@ pre,
 }
 pre,
 code {
-  font-family: 'Roboto Mono', consolas, Menlo, -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "STHeiti", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", "Droid Sans Fallback", "Microsoft YaHei", monospace;
+  font-family: 'Linux Biolinum', consolas, Menlo, -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "STHeiti", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", "Droid Sans Fallback", "Microsoft YaHei", monospace;
 }
 code {
   padding: 2px 4px;
@@ -1896,7 +1896,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #faffda;
+  background: #feedba;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3278,9 +3278,9 @@ img.img-topic {
   color: #07b39b;
 }
 p.description {
-  text-align: center;
+  text-indent: 2em;
+  text-align: justify;
   font-size: 14px;
-  font-style: italic;
   color: #666;
   margin-top: 30px;
 }
