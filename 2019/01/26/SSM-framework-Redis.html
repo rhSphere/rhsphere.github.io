@@ -135,7 +135,7 @@
 <meta property="og:description" content="文章对以下要点进行总结和归纳：1)了解Spring IoC和Spring AOP的基础概念；2)了解MyBatis的特点；3)了解Spring MVC的特点；4)了解为什么要使用NoSQL(Redis)及Redis的优点；5)掌握SSM和Redis的基本结构框图和各种技术的作用。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://www.blogs.rhsphere.com/images/JavaEE/SSM-Redis-architecture.png">
-<meta property="og:updated_time" content="2019-01-27T09:10:07.080Z">
+<meta property="og:updated_time" content="2019-01-27T12:38:18.795Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="认识SSM框架和Redis">
 <meta name="twitter:description" content="文章对以下要点进行总结和归纳：1)了解Spring IoC和Spring AOP的基础概念；2)了解MyBatis的特点；3)了解Spring MVC的特点；4)了解为什么要使用NoSQL(Redis)及Redis的优点；5)掌握SSM和Redis的基本结构框图和各种技术的作用。">
@@ -2085,7 +2085,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #91224f;
+  background: #7da2ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -4290,7 +4290,7 @@ code.description {
 <li><strong>表现层组件</strong>。主要负责收集用户输入数据，或者想客户显示系统状态。最常用的表现层技术是JSP，但JSP并不是唯一的表现层技术。表现层还可以由Velocity、FreeMarker和Tapestry等技术完成，或者使用普通的应用程序充当表现层组件，甚至可以是小型智能设备。</li>
 <li><strong>控制器组件</strong>。关于Java EE的MVC框架，其提供了一个前端核心控制器，核心控制器负责拦截用户请求，并将请求转发给用户实现的控制器组件。这些用户实现的控制器组件则负责调用业务逻辑方法，处理用户请求。</li>
 <li><strong>业务逻辑组件</strong>。这是系统的核心组件，实现系统的业务逻辑。通常，一个业务逻辑方法对应一次用户操作。一个业务逻辑方法应该是一个整体，因此要求对业务逻辑方法增加事务性。业务逻辑方法仅仅实现也呜呜逻辑，不应该进行数据库访问。因此，业务逻辑组件中不应该出现原始的MyBatis、Hibernate和JDBC等API。<span style="color:#5073b8;">最重要的原因是：保证业务逻辑方法的实现与具体的持久层访问技术分离。当系统需要在不同持久层技术之间切换时，系统的业务逻辑组件无序任何改变。</span></li>
-<li><strong>DAO组件</strong>。这个类型的对象比较缺乏变化，每个DAO组件都提供Domain Object对象基本的创建、查询、更新和删除等操作，这些操作对应于数据库的CRUD（创建、查询、更新和删除）等原子操作。当然，如果采用不同的持久层访问技术，DAO组件的会完全不同。为了实现业务逻辑组件的实现与DAO组件的实现分离，吃呢工序应改为每个DAO组件都提供接口，业务逻辑组件面向DAO接口编程，这样才能提供更好的解耦。</li>
+<li><strong>DAO组件</strong>。这个类型的对象比较缺乏变化，每个DAO组件都提供Domain Object对象基本的创建、查询、更新和删除等操作，这些操作对应于数据库的CRUD（创建、查询、更新和删除）等原子操作。当然，如果采用不同的持久层访问技术，DAO组件的会完全不同。为了实现业务逻辑组件的实现与DAO组件的实现分离，程序应该为每个DAO组件都提供接口，业务逻辑组件面向DAO接口编程，这样才能提供更好的解耦。</li>
 <li><strong>领域对象组件</strong>。领域对象（Doamin Object）抽象了系统的对象模型。通常而言，这些领域对象的状态都必须保存在数据库里。因此，每个领域对象通常对应一个或多个数据表，领域对象通常需要提供对数据记录的访问方式。</li>
 </ul>
 <h2 id="最流行的NoSQL-–-Redis"><a href="#最流行的NoSQL-–-Redis" class="headerlink" title="最流行的NoSQL – Redis"></a>最流行的NoSQL – Redis</h2><p>NoSQL(Not Only SQL)存储的数据是半结构化的，Redis成为主要的NoSQL工具。</p>
@@ -4417,7 +4417,7 @@ code.description {
               </a>
             
               <p class="site-author-name" itemprop="name">Depeng Lu</p>
-              <p class="site-description motion-element" itemprop="description">愿你在迷茫时，坚信你的珍贵，爱你所爱，行你所行，听从你心，无问西东</p>
+              <p class="site-description motion-element" itemprop="description">有人举高楼，有人处深沟，有人光万丈，有人一身绣，世人千万种，浮云莫去求，斯人若彩虹，遇上方知有</p>
           </div>
 
           <nav class="site-state motion-element">
