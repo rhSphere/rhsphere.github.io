@@ -1,7 +1,7 @@
 ---
 title: 认识SSM框架和Redis
 tags: [Spring， Spring MVC， MyBatis， Redis]
-date: 2019-01-26 14:09:31
+date: 2018-10-26 14:09:31
 permalink: SSM-framework-Redis
 categories: Java EE
 description:
