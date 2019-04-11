@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.blogs.rhsphere.com/"/>
-  <updated>2019-03-23T16:10:26.496Z</updated>
+  <updated>2019-04-11T03:21:47.385Z</updated>
   <id>https://www.blogs.rhsphere.com/</id>
   
   <author>
@@ -15,6 +15,68 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第一次实验课备课</title>
+    <link href="https://www.blogs.rhsphere.com/2019/04/07/%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%AE%9E%E9%AA%8C%E8%AF%BE%E5%A4%87%E8%AF%BE.html"/>
+    <id>https://www.blogs.rhsphere.com/2019/04/07/第一次实验课备课.html</id>
+    <published>2019-04-07T07:30:59.000Z</published>
+    <updated>2019-04-11T03:21:47.385Z</updated>
+    
+    <content type="html"><![CDATA[<p class="description"></p><p><img src="https://" alt="" style="width:100%"></p><a id="more"></a><h2 id="第一次实验课内容"><a href="#第一次实验课内容" class="headerlink" title="第一次实验课内容"></a>第一次实验课内容</h2><p>前三节课了解流水灯设计的IO口概念，熟悉实验箱和开发环境。最后一节课留给大家自己做实验。<br>三次试验：第一次流水灯，第二次是…，第三次中断综合试验</p><h2 id="实验箱简介（第一节课）"><a href="#实验箱简介（第一节课）" class="headerlink" title="实验箱简介（第一节课）"></a>实验箱简介（第一节课）</h2><h3 id="实验箱简介ppt"><a href="#实验箱简介ppt" class="headerlink" title="实验箱简介ppt"></a>实验箱简介ppt</h3><p>打开文件夹  学习资料 -&gt; ppt -&gt; 01-实验箱简介.ppt</p><ol><li>出问题时把电源切断。把所有准备工作做好，再把电源打开。</li><li>实验箱模块布局，主要分为三部分：<ul><li>布局里面的外围设备（引脚 P3\p4\P1\P2）</li><li>左下ARM CPU（引脚是 P9\P10\P11\P12）</li><li>右下FPGA双缓存 （引脚P13）<br>FPGA与ARM板大部分通过桥接板连接，这里桥接板把CPU和FPGA已经直连了，因ARM和FPGA通信速度比较快，普通连接线会导致连接不稳定。</li></ul></li><li>流水灯（P2接口）与ARM相应口相连</li><li>FPGA型号EP4CE6E22C8N</li><li>独立按键三引脚 高电平，低电平（持续低电平）和10ms低电平（相当于产生一个低电平脉冲）</li><li>交通灯、超声波等模块是已经做好了的模块</li><li>步进电机 比如，从0000跳到0001时转动18度的角度</li><li>数码管 静态显示和动态显示</li><li>通信串口RS485对RS232进行了改进<ul><li>RS232模块传输距离有限，一根传输线只有一路信号，通过高低电平，按照美国110V电压的标准，如果在220V时带电插拔，会把周围的大地电平当成110V，就会烧毁元器件，接入后断电插拔，避免产生接地脉冲（过压、过流）</li><li>RS485由一根线传输改进为两根线，传输距离远，两路信号测量电压差值，用于车联网信号</li></ul></li><li>CP2102模块  USB信号</li><li>拿到实验箱后，左下角有白色按钮开关，另外不熟悉电路板的情况下，不要乱动跳线端子，以免导致电路出问题</li></ol><p>以上就是实验箱的基本情况，如果说涉及到不懂的接口，查看ARM板文档说明。</p><h3 id="MDK安装文档说明"><a href="#MDK安装文档说明" class="headerlink" title="MDK安装文档说明"></a>MDK安装文档说明</h3><p>打开文件夹 Arm -&gt; MDK5安装文档说明文档.doc<br>安装软件、添加器件库</p><ol><li>硬驱动满足电机特性，如功率等；软驱动满足软件的设置</li><li>下载到实验箱的文件就是USER/objects/xxx.axf文件</li></ol><h2 id="流水灯实验（第二节课）"><a href="#流水灯实验（第二节课）" class="headerlink" title="流水灯实验（第二节课）"></a>流水灯实验（第二节课）</h2><p>新建工程有4个步骤： 1.建工程 2.建文件夹 3.配置源文件 4.把源文件串起来</p><ol><li>1.4节实验原理讲解 （cpu与外围电路相连（P12 连接 P2接口））</li><li>实验箱连接 三种方式 实验指导书/文档、程序中的介绍、查看原理图</li><li>外围电路原理讲解（LED灯有相应的额定电流、额定电压与MCU IO的输出的电流、电压不一致，<br>可能会损毁器件，因此需要设计外围驱动电路，硬驱动（为了满足电流电压（电气特性）的要求）） 图1.5MOS管可以当成反相器</li></ol><p>放三极管把电流放大，电阻和三极管合在一起称为硬驱动<br>实验电路别人已经设计好了，但是如果要是自己去设计电路，就要按照这种思路，购买元器件，然后设计。</p><p>IO输入输出是阻塞的，同一时刻只有I或O，但是完成了输入输出的功能<br>CPU处理IO有两种方式，轮询和中断</p><p>推挽 是 驱动方式，具体是上拉或下拉<br>输入输出不接任何设备叫浮空<br>开漏输出：什么都不接<br>推挽输出：实际上是做了甲乙类功放电路</p><ol start="4"><li><p>1.4节（2）B）微控制器IO输出控制原理 讲解 图1.8中上拉电阻 下拉电阻 的作用（将不确定信号钳位在高低电平）</p></li><li><p>1.4节（3）实验过程<br>\资料下载\学习资料\ppt\02-外设介绍及配置  p7 p8 时钟理解</p></li></ol><h2 id="试验程序讲解和debug（第三节课）"><a href="#试验程序讲解和debug（第三节课）" class="headerlink" title="试验程序讲解和debug（第三节课）"></a>试验程序讲解和debug（第三节课）</h2><p>实验程序讲解</p><h2 id="自由实验（第三节课）"><a href="#自由实验（第三节课）" class="headerlink" title="自由实验（第三节课）"></a>自由实验（第三节课）</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p class=&quot;description&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://&quot; alt=&quot;&quot; style=&quot;width:100%&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="实验" scheme="https://www.blogs.rhsphere.com/tags/%E5%AE%9E%E9%AA%8C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>React项目实践</title>
+    <link href="https://www.blogs.rhsphere.com/2019/03/27/React%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%B7%B5.html"/>
+    <id>https://www.blogs.rhsphere.com/2019/03/27/React项目实践.html</id>
+    <published>2019-03-27T07:30:59.000Z</published>
+    <updated>2019-03-27T08:50:16.342Z</updated>
+    
+    <content type="html"><![CDATA[<p class="description"></p><p><img src="https://" alt="" style="width:100%"></p><a id="more"></a><h2 id="指定计划"><a href="#指定计划" class="headerlink" title="指定计划"></a>指定计划</h2><h3 id="功能模块"><a href="#功能模块" class="headerlink" title="功能模块"></a>功能模块</h3><h3 id="架构设计"><a href="#架构设计" class="headerlink" title="架构设计"></a>架构设计</h3><ul><li>前后端完全分离</li><li>单页应用</li><li>模块化开发</li></ul><h3 id="技术储备"><a href="#技术储备" class="headerlink" title="技术储备"></a>技术储备</h3><ul><li>React框架</li></ul><ul><li>React16 JSX表达式</li><li>React组件</li><li>生命周期</li></ul><ul><li>React-Router</li></ul><ul><li>浏览器路由原理</li><li>动态路由 VS 静态路由</li><li>React-Router</li></ul><ul><li><p>Sass Bootstrap </p></li><li><p>ES6语法</p></li></ul><ul><li>基础语法</li><li>Promise</li><li>面向对象</li></ul><ul><li>浏览器资源加载</li></ul><ul><li>URL结构</li><li>资源加载</li><li>浏览器渲染</li></ul><ul><li>本地存储</li></ul><ul><li>Cookie &amp;&amp; Seeeion</li><li>用户登录状态保持</li><li>H5本地存储</li></ul><ul><li>发布上线</li></ul><ul><li>Linux服务器配置</li><li>自动化发布脚本</li><li>域名解析</li></ul><h2 id="后台管理系统的需求分析及技术选型"><a href="#后台管理系统的需求分析及技术选型" class="headerlink" title="后台管理系统的需求分析及技术选型"></a>后台管理系统的需求分析及技术选型</h2><h3 id="核心需求"><a href="#核心需求" class="headerlink" title="核心需求"></a>核心需求</h3><p>根据实际情况来定义</p><h3 id="功能拆分"><a href="#功能拆分" class="headerlink" title="功能拆分"></a>功能拆分</h3><p>根据实际情况来定义</p><h3 id="技术选型–语言和框架"><a href="#技术选型–语言和框架" class="headerlink" title="技术选型–语言和框架"></a>技术选型–语言和框架</h3><ul><li>React</li><li>Sass + Bootstrap</li><li>ES6</li></ul><h3 id="技术选型–语言和框架-1"><a href="#技术选型–语言和框架-1" class="headerlink" title="技术选型–语言和框架"></a>技术选型–语言和框架</h3><ul><li>前后端分离</li><li>分层架构</li><li>模块化开发</li></ul><h3 id="技术选型–辅助工具"><a href="#技术选型–辅助工具" class="headerlink" title="技术选型–辅助工具"></a>技术选型–辅助工具</h3><p>node   npm安装速度慢，包之间的依赖关系很难搞</p><ul><li>yarn 包管理工具</li><li>webpack 代码打包</li><li>git 托管代码，做代码的版本维护</li></ul><h3 id="技术选型–发布过程"><a href="#技术选型–发布过程" class="headerlink" title="技术选型–发布过程"></a>技术选型–发布过程</h3><ul><li>环境配置</li><li>代码部署</li><li>nginx配置</li><li>域名配置</li></ul><h2 id="数据接口的定义"><a href="#数据接口的定义" class="headerlink" title="数据接口的定义"></a>数据接口的定义</h2><h3 id="接口文档规范–格式"><a href="#接口文档规范–格式" class="headerlink" title="接口文档规范–格式"></a>接口文档规范–格式</h3><h3 id="接口文档规范–请求和相应"><a href="#接口文档规范–请求和相应" class="headerlink" title="接口文档规范–请求和相应"></a>接口文档规范–请求和相应</h3><hr>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p class=&quot;description&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://&quot; alt=&quot;&quot; style=&quot;width:100%&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Spring框架快速入门</title>
+    <link href="https://www.blogs.rhsphere.com/2019/03/26/Spring%E6%A1%86%E6%9E%B6%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8.html"/>
+    <id>https://www.blogs.rhsphere.com/2019/03/26/Spring框架快速入门.html</id>
+    <published>2019-03-26T02:56:02.000Z</published>
+    <updated>2019-03-26T02:56:02.783Z</updated>
+    
+    <content type="html"><![CDATA[<p class="description"></p><p><img src="https://" alt="" style="width:100%"></p><a id="more"></a><p>##</p><p>##</p><p>##</p><hr>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p class=&quot;description&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://&quot; alt=&quot;&quot; style=&quot;width:100%&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>设计模式之禅|6大设计原则</title>
