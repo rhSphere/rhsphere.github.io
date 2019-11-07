@@ -113,7 +113,7 @@
 
 
 
-  <meta name="keywords" content="Two Pointers,String,">
+  <meta name="keywords" content="String,Two Pointers,">
 
 
 
@@ -126,18 +126,15 @@
 
 
 
-<meta name="description" content="编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组char[]的形式给出。不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用O(1)的额外空间解决这一问题。">
-<meta name="keywords" content="Two Pointers,String">
+<meta name="keywords" content="String,Two Pointers">
 <meta property="og:type" content="article">
 <meta property="og:title" content="344. Reverse String">
 <meta property="og:url" content="https://www.blogs.rhsphere.com/2019/03/08/344.html">
 <meta property="og:site_name" content="Depeng's Blog">
-<meta property="og:description" content="编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组char[]的形式给出。不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用O(1)的额外空间解决这一问题。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-25T07:28:06.541Z">
+<meta property="og:updated_time" content="2019-10-29T02:35:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="344. Reverse String">
-<meta name="twitter:description" content="编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组char[]的形式给出。不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用O(1)的额外空间解决这一问题。">
 
 
 
@@ -2083,7 +2080,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffff91;
+  background: #f21a74;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -4200,7 +4197,7 @@ code.description {
                   <span class="post-meta-item-text">字数统计:</span>
                 
                 <span title="字数统计">
-                  128
+                  202
                 </span>
               
 
@@ -4237,15 +4234,22 @@ code.description {
       
 
       
-        <p class="description">编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组char[]的形式给出。不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用O(1)的额外空间解决这一问题。</p>
+        <p class="description"></p>
 
 
 
 <a id="more"></a>
-<ul>
+<h1 id="反转字符串"><a href="#反转字符串" class="headerlink" title="反转字符串"></a>反转字符串</h1><p>LeetCode 334</p>
+<p><a href="https://leetcode.com/problems/reverse-string/submissions/" target="_blank" rel="noopener">英文版</a></p>
+<p><a href="https://leetcode-cn.com/problems/reverse-string/submissions/" target="_blank" rel="noopener">中文版</a></p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组char[]的形式给出。不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用O(1)的额外空间解决这一问题。</p>
+<p>示例 1:</p>
+<p>输入: “hello” 输出: “olleh” 示例 2:</p>
+<p>输入: “A man, a plan, a canal: Panama” 输出: “amanaP :lanac a ,nalp a ,nam A”</p>
+<h1 id="Java代码"><a href="#Java代码" class="headerlink" title="Java代码"></a>Java代码</h1><ul>
 <li>头尾两个指针</li>
 </ul>
-<figure class="highlight java"><figcaption><span>344. 反转字符串</span></figcaption><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reverseString</span><span class="params">(<span class="keyword">char</span>[] s)</span> </span>{</span><br><span class="line">        <span class="keyword">int</span> start = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> end = s.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (start &lt; end) {</span><br><span class="line">            <span class="keyword">char</span> tmp = s[start];</span><br><span class="line">            s[start] = s[end];</span><br><span class="line">            s[end] = tmp;</span><br><span class="line">            start++;</span><br><span class="line">            end--;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span>:</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span>: rhsphere</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span>: 2019-10-29 10:30 by jdk 1.8</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReverseStrings</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reverseString</span><span class="params">(<span class="keyword">char</span>[] s)</span> </span>{</span><br><span class="line">        <span class="keyword">if</span> (s == <span class="keyword">null</span> || s.length &lt;= <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        reverse(s);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">char</span>[] chars)</span> </span>{</span><br><span class="line">        <span class="keyword">int</span> start = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> end = chars.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (start &lt; end) {</span><br><span class="line">            <span class="keyword">char</span> tmp = chars[start];</span><br><span class="line">            chars[start] = chars[end];</span><br><span class="line">            chars[end] = tmp;</span><br><span class="line">            start++;</span><br><span class="line">            end--;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <hr>
       
     </div>
@@ -4263,9 +4267,9 @@ code.description {
       
         <div class="post-tags">
           
-            <a href="/tags/Two-Pointers/" rel="tag"><i class="fa fa-tags"></i> Two Pointers</a>
-          
             <a href="/tags/String/" rel="tag"><i class="fa fa-tags"></i> String</a>
+          
+            <a href="/tags/Two-Pointers/" rel="tag"><i class="fa fa-tags"></i> Two Pointers</a>
           
         </div>
       
@@ -4357,8 +4361,17 @@ code.description {
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -4377,7 +4390,7 @@ code.description {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">140</span>
+                  <span class="site-state-item-count">159</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -4388,7 +4401,7 @@ code.description {
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -4399,7 +4412,7 @@ code.description {
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-count">76</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -4515,6 +4528,22 @@ show_date_time();
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#反转字符串"><span class="nav-number">1.</span> <span class="nav-text">反转字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.1.</span> <span class="nav-text">题目</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java代码"><span class="nav-number">2.</span> <span class="nav-text">Java代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -4542,7 +4571,7 @@ show_date_time();
     
       <span class="post-meta-item-text">Site words total count:</span>
     
-    <span title="Site words total count">148.3k</span>
+    <span title="Site words total count">162.6k</span>
   
 </div>
 
