@@ -148,8 +148,8 @@
         <category>String</category>
       </categories>
       <tags>
-        <tag>Tree</tag>
         <tag>String</tag>
+        <tag>Tree</tag>
         <tag>Char Match</tag>
       </tags>
   </entry>
@@ -883,8 +883,8 @@
         <category>剑指Offer</category>
       </categories>
       <tags>
-        <tag>Power</tag>
         <tag>HQ Code</tag>
+        <tag>Power</tag>
       </tags>
   </entry>
   <entry>
@@ -1219,8 +1219,8 @@
         <category>Easy</category>
       </categories>
       <tags>
-        <tag>Array</tag>
         <tag>String</tag>
+        <tag>Array</tag>
       </tags>
   </entry>
   <entry>
@@ -1629,8 +1629,8 @@
       </categories>
       <tags>
         <tag>BST</tag>
-        <tag>tree</tag>
         <tag>search</tag>
+        <tag>tree</tag>
       </tags>
   </entry>
   <entry>

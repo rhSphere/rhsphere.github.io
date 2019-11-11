@@ -322,9 +322,9 @@
       <category term="String" scheme="https://www.blogs.rhsphere.com/categories/String/"/>
     
     
-      <category term="Tree" scheme="https://www.blogs.rhsphere.com/tags/Tree/"/>
-    
       <category term="String" scheme="https://www.blogs.rhsphere.com/tags/String/"/>
+    
+      <category term="Tree" scheme="https://www.blogs.rhsphere.com/tags/Tree/"/>
     
       <category term="Char Match" scheme="https://www.blogs.rhsphere.com/tags/Char-Match/"/>
     
@@ -1812,9 +1812,9 @@
       <category term="剑指Offer" scheme="https://www.blogs.rhsphere.com/categories/%E5%89%91%E6%8C%87Offer/"/>
     
     
-      <category term="Power" scheme="https://www.blogs.rhsphere.com/tags/Power/"/>
-    
       <category term="HQ Code" scheme="https://www.blogs.rhsphere.com/tags/HQ-Code/"/>
+    
+      <category term="Power" scheme="https://www.blogs.rhsphere.com/tags/Power/"/>
     
   </entry>
   
@@ -2484,9 +2484,9 @@
       <category term="Easy" scheme="https://www.blogs.rhsphere.com/categories/Easy/"/>
     
     
-      <category term="Array" scheme="https://www.blogs.rhsphere.com/tags/Array/"/>
-    
       <category term="String" scheme="https://www.blogs.rhsphere.com/tags/String/"/>
+    
+      <category term="Array" scheme="https://www.blogs.rhsphere.com/tags/Array/"/>
     
   </entry>
   
@@ -3328,9 +3328,9 @@
     
       <category term="BST" scheme="https://www.blogs.rhsphere.com/tags/BST/"/>
     
-      <category term="tree" scheme="https://www.blogs.rhsphere.com/tags/tree/"/>
-    
       <category term="search" scheme="https://www.blogs.rhsphere.com/tags/search/"/>
+    
+      <category term="tree" scheme="https://www.blogs.rhsphere.com/tags/tree/"/>
     
   </entry>
   
